@@ -1,0 +1,23 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - db-data-clj-systems-book:/var/lib/postgresql/data
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: book
+      POSTGRES_USER: book
+      POSTGRES_PASSWORD: book
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+        
+volumes:
+  db-data-clj-systems-book:
