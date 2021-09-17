@@ -7,7 +7,8 @@
    [clojure.tools.logging :as log]
    [clojure.data.json :as json]
    [book.systems.mount.db :refer [db]]
-   [book.systems.mount.config :refer [config]]))
+   [book.systems.mount.config :refer [config]]
+   [book.systems.mount.tcp-con-pool :refer [tcp-con-pool]]))
 
 (def query
   "SELECT * FROM requests WHERE NOT is_processed
@@ -17,7 +18,8 @@
   [ip]
   (:body (client/post "https://iplocation.com"
                       {:form-params {:ip ip}
-                       :accept :json})))
+                       :accept :json
+                       :connection-manager tcp-con-pool})))
 
 (defn task-fn
   []

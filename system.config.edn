@@ -7,4 +7,5 @@
         :database-name      "book"
         :server-name        "127.0.0.1"
         :port-number        5432}
- :worker {:sleep 1000}}
+ :worker {:sleep 1000}
+ :http {:timeout 2 :threads 3}}
