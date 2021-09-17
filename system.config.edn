@@ -6,4 +6,5 @@
         :password           "book"
         :database-name      "book"
         :server-name        "127.0.0.1"
-        :port-number        5432}}
+        :port-number        5432}
+ :worker {:sleep 1000}}
